@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Layout from '../components/Layout';
 import Boton from '../components/Boton';
 import { setTelefono } from '../services/appService';
+import Helper from '../utils/Helper';
 
 const NumEmergencia = ({ navigation }) => {
 
@@ -15,14 +16,16 @@ const NumEmergencia = ({ navigation }) => {
             await setTelefono(numero)
                 .then(() => {
                     setNumero(numero);
-                    
                     Alert.alert("El número se guardó correctamente");
                 })
                 .catch((err) => {
                     console.log("entró al catch")
+                    Alert.alert("¡Error!");
+                    Helper()
                 });
         }
         else {
+            await Helper()
             Alert.alert("Ingrese un número de telefono válido");
         }
     };
@@ -38,10 +41,7 @@ const NumEmergencia = ({ navigation }) => {
                     maxLength={10}
                     value={numero}
                     keyboardType="numeric"
-                    onChangeText={(number) =>
-                        setNumero(
-                            number
-                        )}
+                    onChangeText={(number) => setNumero( number)}
                 />
                 <Boton
                     text="Guardar número"

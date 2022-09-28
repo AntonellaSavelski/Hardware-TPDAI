@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, FlatList, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Layout from '../components/Layout';
 import * as Contacts from 'expo-contacts';
 import ListaContactos from '../components/ListaContactos';
+import Helper from '../utils/Helper';
 
 const Contactos = ({ navigation }) => {
 
@@ -11,17 +12,25 @@ const Contactos = ({ navigation }) => {
 
     useEffect(() => {
         (async () => {
-            const { status } = await Contacts.requestPermissionsAsync();
-            if (status === 'granted') {
-                const { data } = await Contacts.getContactsAsync({
-                    fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers],
-                });
-                setContactos(data)
-                if (data.length > 0) {
-                    const contact = data[0];
-                    console.log(contact);
+            let { status } = await Contacts.requestPermissionsAsync();
+            if (status != 'granted'){
+                await Helper()
+                Alert.alert("Se necesita acceso a los contactos para poder ver esta sección")
+                
+                let { status2 } = await Contacts.requestPermissionsAsync();
+
+                if (status2 === 'granted') {
+                    const { data } = await Contacts.getContactsAsync({
+                        fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers],
+                    });
+                    setContactos(data)
+                    if (data.length > 0) {
+                        const contact = data[0];
+                        console.log(contact);
+                    }
                 }
             }
+            
         })();
     }, []);
     return (

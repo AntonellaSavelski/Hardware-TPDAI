@@ -4,9 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 
 export default function ListaContactos ({contacto}) {
-
+    console.log(contacto)
+    
     return (
-
+        
         <View style={{alignItems: 'center'}}>
                 <Card style={styles.card}>
                     <Card.Content style ={{marginTop: '5%',}}>
@@ -14,7 +15,7 @@ export default function ListaContactos ({contacto}) {
                         Nombre completo: {contacto.name}
                     </Text>
                     <Text>
-                        Número telefonico: {contacto.phoneNumber}
+                        Número telefonico: {contacto.phoneNumbers}
                     </Text>   
                     </Card.Content>
                 </Card>
