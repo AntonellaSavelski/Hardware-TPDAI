@@ -33,7 +33,7 @@ const NumEmergencia = ({ navigation }) => {
     return (
         <Layout>
             <View style={styles.container}>
-                <Text style={styles.titulo}>Elija el número de teléfono de emergencia</Text>
+                <Text style={styles.titulo}>Elija el número de teléfono de emergencia:</Text>
                 <TextInput
                     style={styles.textInput}
                     placeholder="Ingrese el número de emergencia"
@@ -62,7 +62,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     titulo: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 20,
+        width: '80%',
+        textAlign: 'center'
     },
     textInput: {
         borderWidth: 1,
@@ -71,6 +74,5 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         backgroundColor: "#fff",
         marginTop: 15,
-
     },
 });

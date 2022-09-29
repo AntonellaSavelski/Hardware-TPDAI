@@ -13,22 +13,12 @@ const BottomTab = () => {
             <Material name='phone-alert' size={30} />
             </Link>
             
-            <Link to={"/Contactos"}>
-            <Material name='contacts' size={30} />
-            </Link>
-
             <Link to={"/Home"}>
             <Ionicons name='qr-code-outline' size={30} />
             </Link>
 
-            <Link to={"/Home"}>
-
-    
-            </Link>
-
-            <Link to={"/Home"}>
-
- 
+            <Link to={"/Contactos"}>
+            <Material name='contacts' size={30} />
             </Link>
         </View>
     )
