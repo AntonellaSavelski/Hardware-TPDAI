@@ -25,7 +25,7 @@ const Contactos = ({ navigation }) => {
             }
             else {
                 await Helper()
-                Alert.alert("Se necesita acceso a los contactos para poder ver esta sección")
+                Alert.alert("Se necesita acceso a los contactos para poder ver esta sección, para habilitar el acceso dirijase a los ajustes del teléfono, aplicaciónes y seleccione permitir.")
                 navigation.navigate("Home")
             }
         })();
