@@ -26,7 +26,6 @@ const Home = ({ navigation }) => {
   const _unsubscribe = () => {
     subscription && subscription.remove();
     setSubscription(null);
-    console.log('cambio la data')
   };
 
   
