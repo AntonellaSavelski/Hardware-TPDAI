@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     titulo: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 20,
+        width: '80%',
+        textAlign: 'center',
+        marginBottom: 15,
     }, 
 });

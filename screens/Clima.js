@@ -1,16 +1,17 @@
-import { Platform, StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Layout from '../components/Layout';
 import React, { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
 import Helper from '../utils/Helper';
+import { getClima } from '../services/appService';
 
 const Clima = ({ navigation }) => {
 
     const [location, setLocation] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
+    const [temperatura, setTemperatura] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -18,7 +19,7 @@ const Clima = ({ navigation }) => {
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 Helper()
-                setErrorMsg('Permission to access location was denied');
+                Alert.alert('Permission to access location was denied');
                 return;
             }
 
@@ -26,16 +27,17 @@ const Clima = ({ navigation }) => {
             setLatitude(location.coords.latitude)
             setLongitude(location.coords.longitude);
             setLocation(location.coords);
+
+            //no se actualiza rapido la latitud y la longitud entonces se mandan como null
+
+            let temper = await getClima(latitude, longitude)
+            console.log(latitude, longitude)
+            setTemperatura(temper);
+           
         })();
     }, []);
+    
 
-    let text = 'Cargando..';
-    if (errorMsg) {
-        text = errorMsg;
-        Helper()
-    } else if (location) {
-        text = JSON.stringify(location);
-    }
         var dia = new Date().getDate();
         var mes = new Date().getMonth() + 1;
         var año = new Date().getFullYear();
@@ -45,15 +47,20 @@ const Clima = ({ navigation }) => {
 
         var fechaCompleta = dia + '-' + mes + '-' + año
         var hora = horas + ':' + minutos + ':' + segundos
-  
+
+        
 
     return (
         <Layout>
+            <View style={styles.vista}>
+            <Text style={styles.titulo}> Hora actual / Temperatura / Ubicación: </Text>
             <View style={styles.container}>
-            <Text style={styles.paragraph}>Fecha: {fechaCompleta}</Text>
-            <Text style={styles.paragraph}>Hora: {hora}</Text>
-                <Text style={styles.paragraph}>Latitud: {latitude}</Text>
-                <Text style={styles.paragraph}>Longitud: {longitude}</Text>
+            <Text><strong>Fecha: </strong>{fechaCompleta}</Text>
+            <Text><strong>Hora: </strong>{hora}</Text>
+            <Text><strong>Temperatura actual: </strong>{temperatura}°C</Text>
+                <Text><strong>Latitud: </strong>{latitude}</Text>
+                <Text><strong>Longitud: </strong>{longitude}</Text>
+            </View>
             </View>
         </Layout>
     );
@@ -63,22 +70,27 @@ const Clima = ({ navigation }) => {
 export default Clima
 
 const styles = StyleSheet.create({
+    vista:{
+        flex:1,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        paddingTop: '80%'
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderColor: 'black',
+        borderRadius: 15,
+        fontSize: 18,
+        width:'80%',
+        padding: 15,
+        marginTop: '2.5%',
     },
     titulo: {
-        fontWeight: 'bold'
-    },
-    aviso: {
-        backgroundColor: '#fff',
-        paddingHorizontal: '5%',
+        fontWeight: 'bold',
+        fontSize: 20,
+        width: '80%',
         textAlign: 'center',
-        paddingTop: '20%',
-        color: 'red',
-        fontSize: 18
-
-    }
+        marginBottom: 15,
+    },
 });
