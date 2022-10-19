@@ -5,6 +5,7 @@ import Home from '../screens/Home';
 import NumEmergencia from '../screens/NumEmegencia';
 import Contactos from '../screens/Contactos';
 import About from '../screens/About'
+import Clima from '../screens/Clima';
 
 const Stack = createNativeStackNavigator()
 
@@ -32,6 +33,10 @@ const MainStack = () => {
                 <Stack.Screen
                     name='About'
                     component={About}
+                />
+                <Stack.Screen
+                    name='Clima'
+                    component={Clima}
                 />
             </Stack.Navigator>
         </NavigationContainer>

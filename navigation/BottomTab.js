@@ -12,14 +12,19 @@ const BottomTab = () => {
             <Link to={"/NumEmergencia"}>
             <Material name='phone-alert' size={30} />
             </Link>
-            
-            <Link to={"/About"}>
-            <Ionicons name='qr-code-outline' size={30} />
-            </Link>
-
             <Link to={"/Contactos"}>
             <Material name='contacts' size={30} />
             </Link>
+            <Link to={"/Home"}>
+            <Ionicons name='home-outline' size={30} />
+            </Link>
+            <Link to={"/About"}>
+            <Ionicons name='qr-code-outline' size={30} />
+            </Link>
+            <Link to={"/Clima"}>
+            <Material name='weather-partly-cloudy' size={30} />
+            </Link>
+            
         </View>
     )
 }

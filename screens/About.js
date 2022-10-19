@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import React, { useState, useEffect } from 'react';
 import Boton from '../components/Boton';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import Helper from '../utils/Helper';
 
 const About = ({ navigation }) => {
 
@@ -30,7 +31,6 @@ const About = ({ navigation }) => {
         setScanned(true);
         setIntegrantes(data)
         setOpen(true)
-        console.log('Type: ' + type + '\nData: ' + data)
     };
 
     // Check permissions and return the screens
@@ -41,7 +41,7 @@ const About = ({ navigation }) => {
             </View>)
     }
     if (hasPermission === false) {
-       
+        Helper()
         Alert.alert("Se necesita acceso a la camara para poder escanear un código.")
             
     }
@@ -65,7 +65,7 @@ const About = ({ navigation }) => {
                 </Modal>
                 {scanned && 
                 <Pressable style={styles.boton} onPress={() => setScanned(false)}>
-                    <Text style={styles.botonText}> ¿Desea escanear otro código?</Text>
+                    <Text style={styles.botonText}> Escanear otro código</Text>
                 </Pressable>}
                 
             </View>
