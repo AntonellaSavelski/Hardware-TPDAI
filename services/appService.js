@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { Alert } from "react-native";
 import Helper from "../utils/Helper"
 
 export const setTelefono = async (numero) => {
@@ -15,11 +16,11 @@ export const getClima = async(lat, lon) => {
 
     return axios.get(`${baseUrl}/current.json?key=${apiKey}&q=${ubi}`)
     .then((response) => {
-        console.log(response.data);
-        return response.data.current.temp_c;
+        
+        return response.data;
     })
     .catch((error) => {
-        console.log("Error en la llamada a la API", error);
+        Alert.alert("Error en la llamada a la API");
         Helper();
     })
 
