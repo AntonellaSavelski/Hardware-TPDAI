@@ -75,7 +75,7 @@ const Clima = ({ navigation }) => {
                     </View>
                     :
                     <View style={styles.vista}>
-                        <Text> Cargando...</Text>
+                        <Text style={{marginBottom: 5}}> Cargando...</Text>
                         <ActivityIndicator />
                     </View>
 

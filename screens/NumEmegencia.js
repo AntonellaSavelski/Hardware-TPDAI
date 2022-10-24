@@ -15,7 +15,7 @@ const NumEmergencia = () => {
             await setTelefono(numero)
                 .then(() => {
                     setNumero(numero);
-                    Alert.alert("El número se guardó correctamente");
+                    Alert.alert(`El número ${numero} se guardó correctamente`);
                 })
                 .catch((err) => {
                     Alert.alert("¡Error!");

@@ -8,7 +8,7 @@ const Home = () => {
     <Layout>
         <View style={styles.container}>
             <Text style={styles.titulo}>Bienvenido al TP React Native 02 - Hardware </Text>
-            <Text>Realizado por: Antonella Savelski </Text>
+            <Text style={{ fontWeight: "bold" }}>Realizado por: <Text style={styles.normal}>Antonella Savelski </Text></Text>
         </View>
     </Layout>
   );
@@ -30,5 +30,8 @@ const styles = StyleSheet.create({
         width: '80%',
         textAlign: 'center',
         marginBottom: 15,
-    }, 
+    },
+    normal: {
+        fontWeight: "normal",
+    }
 });

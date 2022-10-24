@@ -3,6 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { Link } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Feather from 'react-native-vector-icons/Feather'
 
 const Tab = createBottomTabNavigator()
 
@@ -10,10 +12,10 @@ const BottomTab = () => {
     return (
         <View style={styles.mainView}>
             <Link to={"/NumEmergencia"}>
-                <Material name='phone-alert' size={30} />
+                <Feather name='phone' size={30} />
             </Link>
             <Link to={"/Contactos"}>
-                <Material name='contacts' size={30} />
+                <AntDesign name='contacts' size={30} />
             </Link>
             <Link to={"/Home"}>
                 <Ionicons name='home-outline' size={30} />
