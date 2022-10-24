@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Text } from 'react-native';
 import Layout from '../components/Layout';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Home = ({ navigation }) => {
+const Home = () => {
 
   return (
     <Layout>

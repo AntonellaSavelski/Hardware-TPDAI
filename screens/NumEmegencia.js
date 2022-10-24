@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import Layout from '../components/Layout';
 import Boton from '../components/Boton';
 import { setTelefono } from '../services/appService';
 import Helper from '../utils/Helper';
 
-const NumEmergencia = ({ navigation }) => {
+const NumEmergencia = () => {
 
     const [numero, setNumero] = useState('')
 
@@ -19,7 +18,6 @@ const NumEmergencia = ({ navigation }) => {
                     Alert.alert("El número se guardó correctamente");
                 })
                 .catch((err) => {
-                    console.log("entró al catch")
                     Alert.alert("¡Error!");
                     Helper()
                 });

@@ -10,21 +10,20 @@ const BottomTab = () => {
     return (
         <View style={styles.mainView}>
             <Link to={"/NumEmergencia"}>
-            <Material name='phone-alert' size={30} />
+                <Material name='phone-alert' size={30} />
             </Link>
             <Link to={"/Contactos"}>
-            <Material name='contacts' size={30} />
+                <Material name='contacts' size={30} />
             </Link>
             <Link to={"/Home"}>
-            <Ionicons name='home-outline' size={30} />
+                <Ionicons name='home-outline' size={30} />
             </Link>
             <Link to={"/About"}>
-            <Ionicons name='qr-code-outline' size={30} />
+                <Ionicons name='qr-code-outline' size={30} />
             </Link>
             <Link to={"/Clima"}>
-            <Material name='weather-partly-cloudy' size={30} />
+                <Material name='weather-partly-cloudy' size={30} />
             </Link>
-            
         </View>
     )
 }
@@ -35,13 +34,13 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 18,
         flexDirection: "row",
-        justifyContent:"space-around",
+        justifyContent: "space-around",
         backgroundColor: "white",
         paddingVertical: "3%",
         position: "absolute",
         bottom: 0,
-        width:"100%",
+        width: "100%",
         borderWidth: 1,
-        borderColor: 'black' 
+        borderColor: 'black'
     },
 });

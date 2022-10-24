@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Boton = (props) => {
 
     const { onPress, text } = props
 
     return (
-    
+
         <TouchableOpacity
 
             style={style.button}
@@ -15,9 +15,9 @@ const Boton = (props) => {
             <Text style={style.buttonText}>
                 {text}
             </Text>
-        
+
         </TouchableOpacity>
-       
+
     )
 }
 
@@ -33,7 +33,7 @@ const style = StyleSheet.create({
     },
     button: {
         backgroundColor: 'blue',
-        borderWidth:2,
+        borderWidth: 2,
         borderColor: 'black',
         borderRadius: 8,
         padding: 15,

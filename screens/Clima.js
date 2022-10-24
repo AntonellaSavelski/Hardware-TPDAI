@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Alert, Image, ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import Layout from '../components/Layout';
 import React, { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
@@ -22,8 +21,8 @@ const Clima = ({ navigation }) => {
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 Helper()
-                Alert.alert('Permission to access location was denied');
-                return;
+                Alert.alert('El permiso para acceder a la ubicación fue rechazado');
+                navigation.navigate("Home")
             }
 
             let location = await Location.getCurrentPositionAsync({});
@@ -63,10 +62,9 @@ const Clima = ({ navigation }) => {
                 icono
                     ?
                     <View style={styles.vista}>
-                        <Text>{icono}</Text>
                         <Text style={styles.titulo}> Hora actual / Temperatura / Ubicación: </Text>
                         <View style={styles.container}>
-                            <Text style={{ fontWeight: "bold" }}>Temperatura actual: <Text style={styles.normal}>{temperatura}°C <Image source={{uri: `${icono}`}} style={{width:25, height:25}}></Image> </Text> </Text>
+                            <Text style={{ fontWeight: "bold" }}>Temperatura actual: <Text style={styles.normal}>{temperatura}°C <Image source={{ uri: `https:${icono}` }} style={{ width: 30, height: 30 }}></Image> </Text> </Text>
                             <Text style={{ fontWeight: "bold" }}>Fecha: <Text style={styles.normal}>{fechaCompleta}</Text></Text>
                             <Text style={{ fontWeight: "bold" }}>Hora: <Text style={styles.normal}>{hora}</Text></Text>
                             <Text style={{ fontWeight: "bold" }}>Barrio: <Text style={styles.normal}>{barrio}</Text></Text>
@@ -76,7 +74,11 @@ const Clima = ({ navigation }) => {
                         </View>
                     </View>
                     :
-            <ActivityIndicator />
+                    <View style={styles.vista}>
+                        <Text> Cargando...</Text>
+                        <ActivityIndicator />
+                    </View>
+
             }
 
 

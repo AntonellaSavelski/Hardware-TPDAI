@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, Alert, Modal, Pressable} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, Image, Button, Alert, Modal, Pressable } from 'react-native';
 import Layout from '../components/Layout';
 import React, { useState, useEffect } from 'react';
-import Boton from '../components/Boton';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import Helper from '../utils/Helper';
 
@@ -37,42 +35,42 @@ const About = ({ navigation }) => {
     if (hasPermission === null) {
         return (
             <View style={styles.container}>
-                <Text>Requesting for camera permission</Text>
+                <Text style={{width:'80%'}}>Esperando a que el permiso de acceso a la camara sea concedido</Text>
             </View>)
     }
     if (hasPermission === false) {
         Helper()
         Alert.alert("Se necesita acceso a la camara para poder escanear un código.")
-            
+        navigation.navigate("Home")
+
     }
     return (
         <Layout>
             <View style={styles.container}>
-                <Text style={styles.titulo}> Sobre Nosotros</Text>
+                <Text style={styles.titulo}> Sobre Mi</Text>
                 <Image
-                    style={{ width: 200, height: 200 }}
+                    style={{ minWidth: 200, minHeight: 200 }}
                     source={{ uri: `${miQR}` }}
                 />
-               <View style={styles.barcodebox}>
+                <View style={styles.barcodebox}>
                     <BarCodeScanner
                         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                        style={{ height: 400, width: 400 }} />
+                        style={{ minHeight: 400, minWidth: 400 }} />
                 </View>
                 <Modal visible={open}>
 
-                    <Text style={styles.maintext}>Los integrantes del grupo cuyo QR fue escaneado son: <Text style={{fontWeight:'normal'}}>{integrantes}</Text></Text>
+                    <Text style={styles.maintext}>Los integrantes del grupo cuyo QR fue escaneado son: <Text style={{ fontWeight: 'normal' }}>{integrantes}</Text></Text>
                     <Button title="Cerrar" onPress={() => setOpen(false)} color='blue' />
                 </Modal>
-                {scanned && 
-                <Pressable style={styles.boton} onPress={() => setScanned(false)}>
-                    <Text style={styles.botonText}> Escanear otro código</Text>
-                </Pressable>}
-                
+                {scanned &&
+                    <Pressable style={styles.boton} onPress={() => setScanned(false)}>
+                        <Text style={styles.botonText}> Escanear otro código</Text>
+                    </Pressable>}
+
             </View>
 
         </Layout>
     );
-
 }
 
 export default About
@@ -83,7 +81,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
-
     },
     titulo: {
         fontWeight: 'bold',
@@ -101,20 +98,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: 300,
-        width: 300,
+        minWidth: 300,
         overflow: 'hidden',
         borderRadius: 30,
         backgroundColor: 'white',
         marginTop: '10%'
     },
-    boton:{
-        marginTop: '10%', 
+    boton: {
+        marginTop: '10%',
         padding: '5%',
         backgroundColor: 'blue',
         borderRadius: 8,
-        
+
     },
-    botonText:{
+    botonText: {
         fontSize: 16,
         color: 'white',
     }

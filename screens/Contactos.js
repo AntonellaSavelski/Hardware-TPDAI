@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity, FlatList, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import Layout from '../components/Layout';
 import * as Contacts from 'expo-contacts';
 import ListaContactos from '../components/ListaContactos';
